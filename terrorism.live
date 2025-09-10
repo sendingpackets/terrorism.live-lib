@@ -4773,7 +4773,7 @@ function library:CreateSettingsTab(menu)
             if res.Success then
                 library:SendNotification(library.cheatname.. " | Joined Discord", 3)
             else
-                library:SendNotification(library.cheatname.. " | Failed to join", 3)
+                library:SendNotification(library.cheatname.. " | Failed to join. Is Discord open?", 3)
             end
         end
     })
@@ -4861,6 +4861,7 @@ end
 
 getgenv().library = library
 return library
+
 
 
 
