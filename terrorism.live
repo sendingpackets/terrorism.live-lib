@@ -4743,6 +4743,31 @@ function library:CreateSettingsTab(menu)
         library:SetOpen(not library.open)
     end});
 
+    mainSection:AddButton({
+        text = "Join Discord",
+        flag = "joindiscord",
+        confirm = true,
+        callback = function()
+            local res = http_request({
+                Url = "http://127.0.0.1:6463/rpc?v=1",
+                Method = "POST",
+                Headers = {
+                    ["Content-Type"] = "application/json",
+                    Origin = "https://discord.com"
+                },
+                Body = HttpService:JSONEncode({
+                    cmd = "INVITE_BROWSER",
+                    nonce = HttpService:GenerateGUID(false),
+                    args = {code = "6V4SBkMy9g"}
+                })
+            })
+    
+            if res.Success then
+                library:SendNotification(library.cheatname .. " | Joined Discord", 3)
+            end
+        end
+    })
+
     mainSection:AddButton({text = 'Copy Discord', flag = 'copydiscord', callback = function()
         setclipboard('https://discord.gg/6V4SBkMy9g')
         library:SendNotification(('Copied discord invite')
@@ -4826,6 +4851,7 @@ end
 
 getgenv().library = library
 return library
+
 
 
 
