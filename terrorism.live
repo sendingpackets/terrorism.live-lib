@@ -4780,7 +4780,7 @@ function library:CreateSettingsTab(menu)
 
     mainSection:AddButton({text = 'Copy Discord', flag = 'copydiscord', callback = function()
         setclipboard('https://discord.gg/6V4SBkMy9g')
-        library:SendNotification(('Copied Discord Invite'))
+        library:SendNotification(library.cheatname.. " | Copied Discord invite", 3)
     end})
 
     mainSection:AddButton({text = 'Rejoin Server', confirm = true, callback = function()
@@ -4793,6 +4793,7 @@ function library:CreateSettingsTab(menu)
 
     mainSection:AddButton({text = 'Copy Join Script', callback = function()
         setclipboard(([[game:GetService("TeleportService"):TeleportToPlaceInstance(%s, "%s")]]):format(game.PlaceId, game.JobId))
+        library:SendNotification(library.cheatname.. " | Copied join script", 3)
     end})
 
     mainSection:AddButton({text = "Unload", confirm = true,
@@ -4861,6 +4862,7 @@ end
 
 getgenv().library = library
 return library
+
 
 
 
