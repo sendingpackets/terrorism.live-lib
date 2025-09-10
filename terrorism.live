@@ -4745,6 +4745,7 @@ function library:CreateSettingsTab(menu)
 
     mainSection:AddButton({text = 'Copy Discord', flag = 'copydiscord', callback = function()
         setclipboard('https://discord.gg/6V4SBkMy9g')
+        library:SendNotification(('Copied discord invite')
     end})
 
     mainSection:AddButton({text = 'Rejoin Server', confirm = true, callback = function()
@@ -4825,6 +4826,7 @@ end
 
 getgenv().library = library
 return library
+
 
 
 
