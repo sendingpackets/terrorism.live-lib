@@ -4748,6 +4748,15 @@ function library:CreateSettingsTab(menu)
         flag = "joindiscord",
         confirm = true,
         callback = function()
+            local HttpService = game:GetService("HttpService")
+            local function nonce(n)
+                local c,t="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",{}
+                for i=1,n do
+                    local r=math.random(#c)
+                    t[i]=c:sub(r,r)
+                end
+                return table.concat(t)
+            end
             local res = http_request({
                 Url = "http://127.0.0.1:6463/rpc?v=1",
                 Method = "POST",
@@ -4757,13 +4766,14 @@ function library:CreateSettingsTab(menu)
                 },
                 Body = HttpService:JSONEncode({
                     cmd = "INVITE_BROWSER",
-                    nonce = HttpService:GenerateGUID(false),
+                    nonce = nonce(16),
                     args = {code = "6V4SBkMy9g"}
                 })
             })
-
             if res.Success then
-                library:SendNotification(library.swag .. " | Joined Discord", 3)
+                library:SendNotification(library.cheatname.. " | Joined Discord", 3)
+            else
+                library:SendNotification(library.cheatname.. " | Failed to join", 3)
             end
         end
     })
@@ -4851,6 +4861,7 @@ end
 
 getgenv().library = library
 return library
+
 
 
 
