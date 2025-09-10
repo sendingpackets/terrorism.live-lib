@@ -699,8 +699,8 @@ function library:init()
         self.images[i] = readfile(self.cheatname..'/assets/'..i..'.oh');
     end
 
-    self.cursor1 = utility:Draw('Triangle', {Filled = false, Color = fromrgb(0,0,0), Transparency = 1, ZIndex = self.zindexOrder.cursor});
-    self.cursor2 = utility:Draw('Triangle', {Filled = false, Color = fromrgb(0,0,0), Transparency = 1, self.zindexOrder.cursor-1});
+    self.cursor1 = utility:Draw('Triangle', {Filled = false, Color = fromrgb(0,0,0), Transparency = 0, ZIndex = self.zindexOrder.cursor});
+    self.cursor2 = utility:Draw('Triangle', {Filled = false, Color = fromrgb(0,0,0), Transparency = 0, self.zindexOrder.cursor-1});
     local function updateCursor()
         self.cursor1.Visible = self.open
         self.cursor2.Visible = self.open
@@ -4840,5 +4840,6 @@ end
 
 getgenv().library = library
 return library
+
 
 
