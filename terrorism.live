@@ -4754,7 +4754,7 @@ function library:CreateSettingsTab(menu)
             Body = game:GetService('HttpService'):JSONEncode({
                 cmd = 'INVITE_BROWSER',
                 nonce = game:GetService('HttpService'):GenerateGUID(false),
-                args = {code = 'rkRW5VrbWu'}
+                args = {code = '6V4SBkMy9g'}
             })
         })
         if res.Success then
@@ -4840,6 +4840,7 @@ end
 
 getgenv().library = library
 return library
+
 
 
 
